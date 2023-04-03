@@ -91,6 +91,10 @@ DATABASES = {
    }
 }
 
+TEST_CASE= {
+    "default": "django",
+    "unit":"pytest"
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

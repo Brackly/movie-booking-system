@@ -173,7 +173,7 @@ class BookTickets(View):
                 print("same")
                 obj1 = models.BookedSeatsModel.objects.get(movie_name=movie_name, date=date_s, time=time_fld)
                 obj1.seats = obj1.seats + booked_seats
-                obj1.number = int(obj1.number) + number
+                obj1.number = int(obj1.number) + int(number)
                 obj1.save()
 
                 obj = models.UserBook(user=request.user, movie_name=movie_name, date=date_s, show=time_fld, seats=booked_seats)
@@ -218,7 +218,8 @@ class BuyTicket(generic.ListView):
     def post(self, request, *args, **kwargs):
 
         if request.method == 'POST':
-            time = request.POST['tm']
+            time = request.POST.get('tm', False)
+            # time = request.POST['tm']
             date = request.POST['datee']
 
             print(time)

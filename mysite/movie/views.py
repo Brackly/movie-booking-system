@@ -81,6 +81,20 @@ class SetMovies(generic.CreateView):
     template_name = "movie/setmovies.html"
     
 
+def test_show(movie,start,price) -> bool:
+    import datetime
+    
+    date = str(datetime.datetime.now().strftime("%x"))
+    if movie or start or price is None:
+        return False
+    elif datetime.strptime(start, '%m/%d/%Y').date()!=date:
+        return False
+    else:
+        return True
+    
+
+
+    
 
 
 
